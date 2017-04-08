@@ -71,6 +71,10 @@ cout<< "Program function called" << endl;
 
 	// errors += more_defines ();
 
+    while (token != EOF_T) {
+        token = lex->GetToken();
+        cout << "Lexeme is: " << lex-> GetLexeme() << endl; 
+    }
 	if (token != EOF_T)
 	{
 		lex->ReportError ("Expected end of file; " + lex->GetLexeme ());
