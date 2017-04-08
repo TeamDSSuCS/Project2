@@ -1,0 +1,9 @@
+Input file: test.ss
+   1: ; This is a very small test file
+   2: 
+   3: (define (main)
+	LPAREN_T        (
+program function called
+Error at 3,1: Expected end of file; (
+program function returning 1 errors
+1 errors found in input file

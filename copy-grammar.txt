@@ -1,0 +1,72 @@
+<program> -> <define> <more_defines> EOF_T
+<define> -> LPAREN_T DEFINE_T LPAREN_T IDENT_T <param_list> RPAREN_T <stmt> <stmt_list> RPAREN_T
+<more_defines> -> <define> <more_defines>
+<more_defines> -> {}
+<stmt_list> -> <stmt> <stmt_list>
+<stmt_list> -> {}
+<stmt> -> <literal>
+<stmt> -> IDENT_T
+<stmt> -> LPAREN_T <action> RPAREN_T
+<literal> -> NUMLIT_T
+<literal> -> QUOTE_T <quoted_lit>
+<quoted_lit> -> <any_other_token>
+<more_tokens> -> <any_other_token> <more_tokens>
+<more_tokens> -> {}
+<param_list> -> IDENT_T <param_list>
+<param_list> -> {}
+<else_part> -> <stmt>
+<else_part> -> {}
+<action> -> IF_T <stmt> <stmt> <else_part>
+<action> -> LISTOP_T <stmt>
+<action> -> CONS_T <stmt> <stmt>
+<action> -> AND_T <stmt_list>
+<action> -> OR_T <stmt_list>
+<action> -> NOT_T <stmt>
+<action> -> NUMBERP_T <stmt>
+<action> -> SYMBOLP_T <stmt>
+<action> -> LISTP_T <stmt>
+<action> -> ZEROP_T <stmt>
+<action> -> NULLP_T <stmt>
+<action> -> CHARP_T <stmt>
+<action> -> STRINGP_T <stmt>
+<action> -> PLUS_T <stmt_list>
+<action> -> MINUS_T <stmt> <stmt_list>
+<action> -> DIV_T <stmt> <stmt_list>
+<action> -> MULT_T <stmt_list>
+<action> -> EQUALTO_T <stmt_list>
+<action> -> GT_T <stmt_list>
+<action> -> LT_T <stmt_list>
+<action> -> GTE_T <stmt_list>
+<action> -> LTE_T <stmt_list>
+<action> -> IDENT_T <stmt_list>
+<action> -> DISPLAY_T <stmt>
+<action> -> NEWLINE_T
+<any_other_token> -> LPAREN_T <more_tokens> RPAREN_T
+<any_other_token> -> IDENT_T
+<any_other_token> -> NUMLIT_T
+<any_other_token> -> CONS_T
+<any_other_token> -> IF_T
+<any_other_token> -> DISPLAY_T
+<any_other_token> -> NEWLINE_T
+<any_other_token> -> LISTOP_T
+<any_other_token> -> AND_T
+<any_other_token> -> OR_T
+<any_other_token> -> NOT_T
+<any_other_token> -> DEFINE_T
+<any_other_token> -> NUMBERP_T
+<any_other_token> -> SYMBOLP_T
+<any_other_token> -> LISTP_T
+<any_other_token> -> ZEROP_T
+<any_other_token> -> NULLP_T
+<any_other_token> -> CHARP_T
+<any_other_token> -> STRINGP_T
+<any_other_token> -> PLUS_T
+<any_other_token> -> MINUS_T
+<any_other_token> -> DIV_T
+<any_other_token> -> MULT_T
+<any_other_token> -> EQUALTO_T
+<any_other_token> -> GT_T
+<any_other_token> -> LT_T
+<any_other_token> -> GTE_T
+<any_other_token> -> LTE_T
+<any_other_token> -> QUOTE_T
