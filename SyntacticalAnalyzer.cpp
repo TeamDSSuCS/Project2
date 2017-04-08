@@ -59,6 +59,7 @@ cout<< "Program function called" << endl;
 	lex->debug << "program function called\n";
 	p2file << "program\n";
 	int errors = 0;
+	// dfa evaluator
 	// token should be in the firsts of program
 	// if true... keep going
 	// if false...
