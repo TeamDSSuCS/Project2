@@ -1,9 +1,9 @@
 Input file: test.ss
+program function called
    1: ; This is a very small test file
    2: 
    3: (define (main)
 	LPAREN_T        (
-program function called
 	DEFINE_T        define
 	LPAREN_T        (
 	IDENT_T         main

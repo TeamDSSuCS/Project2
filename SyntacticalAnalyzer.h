@@ -19,6 +19,14 @@ class SyntacticalAnalyzer
     public:
 	SyntacticalAnalyzer (char * filename);
 	~SyntacticalAnalyzer ();
+    int define(int current_rule);
+    int param_list(int current_rule);
+    int stmt(int current_rule);
+    int literal(int current_rule);
+    int action(int current_rule);
+    int quoted_lit(int current_rule);
+    int any_other_token(int current_rule);
+    int more_tokens(int current_rule);
     private:
 	LexicalAnalyzer * lex;
 	ofstream p2file;
