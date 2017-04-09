@@ -21,6 +21,7 @@ class SyntacticalAnalyzer
 	~SyntacticalAnalyzer ();
     int define(int current_rule);
     int param_list(int current_rule);
+    int else_part(int current_rule);
     int stmt(int current_rule);
     int stmt_list(int current_rule);
     int literal(int current_rule);
