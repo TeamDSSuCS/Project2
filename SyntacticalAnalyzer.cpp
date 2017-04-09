@@ -16,7 +16,8 @@
 using namespace std;
 
 int ll1table[][32] = 
-{{-1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+{
+{-1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
 {-1,2,-1,-1,-1,-2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
 {4,3,-1,-1,-1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
 {-1,5,-1,5,6,6,5,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
@@ -65,8 +66,7 @@ static std::map<std::string, int> token_to_col = {
 
 
 
-SyntacticalAnalyzer::SyntacticalAnalyzer (char * filename)
-{
+SyntacticalAnalyzer::SyntacticalAnalyzer (char * filename) {
 /********************************************************************************/
 /* This function will								*/
 /********************************************************************************/
@@ -95,11 +95,11 @@ int SyntacticalAnalyzer::action(int current_rule) {
     if (lex->GetTokenName(token) == "DISPLAY_T") {
         p2file << "Using rule 42" << endl;
         token = lex->GetToken();
-        stmt(4);
+        errors += stmt(4);
     } else if (lex->GetTokenName(token) == "LISTOP_T") {
         p2file << "Using rule 20" << endl;
         token = lex->GetToken();
-        stmt(4);
+        errors += stmt(4);
     } else if (lex->GetTokenName(token) == "NEWLINE_T") {
         p2file << "Using rule 43" << endl;
         token = lex->GetToken();
@@ -109,6 +109,12 @@ int SyntacticalAnalyzer::action(int current_rule) {
     return 0;
 }
 
+int SyntacticalAnalyzer::else_part(int current_rule) {
+    int errors = 0;
+    return errors;
+}
+
+
 int SyntacticalAnalyzer::stmt_list(int current_rule) {
     int errors = 0;
     p2file << "Starting <stmt_list>. Current token = " << lex->GetTokenName(token) << endl;
@@ -116,8 +122,8 @@ int SyntacticalAnalyzer::stmt_list(int current_rule) {
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
         case 5: {
-            stmt(4);
-            stmt_list(3);
+            errors += stmt(4);
+            errors += stmt_list(3);
             break;
         }
         case 6: {
@@ -135,6 +141,7 @@ int SyntacticalAnalyzer::param_list(int current_rule) {
         p2file << "Using rule 16" << endl;
     } else {
         token = lex->GetToken();
+        errors += param_list(8);
     }
     p2file << "Ending <param_list>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return 0;
@@ -155,10 +162,10 @@ int SyntacticalAnalyzer::define(int current_rule) {
     if (lex->GetTokenName(token) != "IDENT_T")
         p2file << "Error" << endl;
     token = lex->GetToken();
-    param_list(8);
+    errors += param_list(8);
     token = lex->GetToken();
-    stmt(4);
-    stmt_list(3);
+    errors += stmt(4);
+    errors += stmt_list(3);
     token = lex->GetToken();
     p2file << "Ending <define>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return 0;
@@ -171,8 +178,8 @@ int SyntacticalAnalyzer::more_tokens(int current_rule) {
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
         case(13): { 
-            any_other_token(11);
-            more_tokens(7);
+            errors += any_other_token(11);
+            errors += more_tokens(7);
             }
         case(14): {
 
@@ -190,12 +197,11 @@ int SyntacticalAnalyzer::any_other_token(int current_rule) {
     switch(next_rule) {
         case(44): {
             token = lex->GetToken();
-            more_tokens(7);
+            errors += more_tokens(7);
             break;
             //token = lex->GetToken();
         }
-        case(45):{ 
-        }
+        default: break;
         //default: token = lex->GetToken();
     }
     token = lex->GetToken();
@@ -210,7 +216,8 @@ int SyntacticalAnalyzer::quoted_lit(int current_rule) {
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
-        case(12): any_other_token(11);
+        case(12): 
+            errors += any_other_token(11);
     }
     p2file << "Ending <qutoed_lit>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return errors;
@@ -222,7 +229,9 @@ int SyntacticalAnalyzer::literal(int current_rule) {
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
-        case(11): quoted_lit(6);
+        case(11): 
+            errors += quoted_lit(6);
+            break;
     }
     p2file << "Ending <literal>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
 }
@@ -244,14 +253,14 @@ int SyntacticalAnalyzer::stmt(int current_rule) {
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
         case 9:
-            action(next_rule);
+            errors += action(next_rule);
             break;
         case 7:
-            literal(5);
+            errors += literal(5);
             break;
     }
     p2file << "Ending <stmt>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
-    return 0;
+    return errors;
 }
 
 int SyntacticalAnalyzer::program ()
@@ -283,8 +292,8 @@ int SyntacticalAnalyzer::program ()
     p2file << "Using rule " << next_rule << std::endl;
     switch(next_rule) {
         case 1: {
-            define(next_rule);
-            more_defines(2);
+            errors += define(next_rule);
+            errors += more_defines(2);
             p2file << "Ending <program>. Current Token = " << lex->GetTokenName(token) << ". Errors = "<< errors << endl;
             break;
             //stmt(4);
