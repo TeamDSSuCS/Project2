@@ -27,6 +27,7 @@ class SyntacticalAnalyzer
     int quoted_lit(int current_rule);
     int any_other_token(int current_rule);
     int more_tokens(int current_rule);
+    int more_defines(int current_rule);
     private:
 	LexicalAnalyzer * lex;
 	ofstream p2file;
