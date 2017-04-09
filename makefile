@@ -20,14 +20,14 @@ run: P2.out
 	./P2.out test.ss
 
 submit : Project2.cpp LexicalAnalyzer.h LexicalAnalyzer.save SyntacticalAnalyzer.h SyntacticalAnalyzer.cpp makefile README.txt
-	rm -rf ylnP2
-	mkdir ylnP2
-	cp Project2.cpp ylnP2
-	cp LexicalAnalyzer.h ylnP2
-	cp LexicalAnalyzer.save ylnP2
-	cp SyntacticalAnalyzer.h ylnP2
-	cp SyntacticalAnalyzer.cpp ylnP2
-	cp makefile ylnP2
-	cp README.txt ylnP2
-	tar cfvz ylnP2.tgz ylnP2
-	cp ylnP2.tgz ~tiayln/cs460drop
+	rm -rf TeamDP2
+	mkdir TeamDP2
+	cp Project2.cpp TeamDP2
+	cp LexicalAnalyzer.h TeamDP2
+	cp LexicalAnalyzer.save TeamDP2
+	cp SyntacticalAnalyzer.h TeamDP2
+	cp SyntacticalAnalyzer.cpp TeamDP2
+	cp makefile TeamDP2
+	cp README.txt TeamDP2
+	tar cfvz TeamDP2.tgz TeamDP2
+	cp TeamDP2.tgz ~tiawatts/cs460drop
