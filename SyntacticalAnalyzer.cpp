@@ -106,7 +106,7 @@ int SyntacticalAnalyzer::action(int current_rule) {
     }
     p2file << "Ending <action>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     token = lex->GetToken();
-    return 0;
+    return errors;
 }
 
 int SyntacticalAnalyzer::stmt_list(int current_rule) {
@@ -135,9 +135,10 @@ int SyntacticalAnalyzer::param_list(int current_rule) {
         p2file << "Using rule 16" << endl;
     } else {
         token = lex->GetToken();
+	param_list(8);
     }
     p2file << "Ending <param_list>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
-    return 0;
+    return errors;
 }
 
 int SyntacticalAnalyzer::define(int current_rule) {
@@ -161,7 +162,7 @@ int SyntacticalAnalyzer::define(int current_rule) {
     stmt_list(3);
     token = lex->GetToken();
     p2file << "Ending <define>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
-    return 0;
+    return errors;
 }
 
 int SyntacticalAnalyzer::more_tokens(int current_rule) {
@@ -170,11 +171,11 @@ int SyntacticalAnalyzer::more_tokens(int current_rule) {
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
-        case(13): { 
+        case 13: { 
             any_other_token(11);
             more_tokens(7);
             }
-        case(14): {
+        case 14: {
 
         }
     }
@@ -188,15 +189,15 @@ int SyntacticalAnalyzer::any_other_token(int current_rule) {
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
-        case(44): {
+        case 44: {
             token = lex->GetToken();
             more_tokens(7);
             break;
-            //token = lex->GetToken();
-        }
-        case(45):{ 
-        }
-        //default: token = lex->GetToken();
+      //token = lex->GetToken();
+            }
+        default: {
+            break;
+	}
     }
     token = lex->GetToken();
     p2file << "Ending <any_other_token>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
@@ -210,7 +211,7 @@ int SyntacticalAnalyzer::quoted_lit(int current_rule) {
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
-        case(12): any_other_token(11);
+        case 12: any_other_token(11);
     }
     p2file << "Ending <qutoed_lit>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return errors;
@@ -222,7 +223,11 @@ int SyntacticalAnalyzer::literal(int current_rule) {
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
-        case(11): quoted_lit(6);
+        case 11:
+	  quoted_lit(6);
+	  break;
+        case 10:
+	  break;
     }
     p2file << "Ending <literal>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
 }
@@ -232,6 +237,15 @@ int SyntacticalAnalyzer::more_defines(int current_rule) {
     p2file << "Starting <more_defines>. Current token = " << lex->GetTokenName(token) << endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
+
+    switch(next_rule) {
+    case 3:
+      define(1);
+      more_defines(2);
+      break;
+    }
+    
+    
     p2file << "Ending <more_defines>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return errors;
 }
@@ -247,8 +261,10 @@ int SyntacticalAnalyzer::stmt(int current_rule) {
             action(next_rule);
             break;
         case 7:
-            literal(5);
+	    literal(5);
             break;
+        case 8:
+	  break;
     }
     p2file << "Ending <stmt>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return 0;
