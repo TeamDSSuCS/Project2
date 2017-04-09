@@ -18,8 +18,8 @@ using namespace std;
 int ll1table[][32] = 
 {{-1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
 {-1,2,-1,-1,-1,-2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-2,3,-1,-1,-1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-1,5,-1,5,-2,6,5,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+{4,3,-1,-1,-1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+{-1,5,-1,5,6,6,5,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
 {-1,9,-1,8,-2,-2,7,7,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
 {-1,-2,-1,-2,-2,-2,10,11,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
 {-1,12,12,12,-2,-2,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12},
@@ -94,12 +94,38 @@ int SyntacticalAnalyzer::action(int current_rule) {
     cout << "Starting <action>. Current token = " << lex->GetTokenName(token) << endl;
     if (lex->GetTokenName(token) == "DISPLAY_T") {
         cout << "Using rule 42" << endl;
+        token = lex->GetToken();
         stmt(4);
     } else if (lex->GetTokenName(token) == "LISTOP_T") {
         cout << "Using rule 20" << endl;
+        token = lex->GetToken();
         stmt(4);
+    } else if (lex->GetTokenName(token) == "NEWLINE_T") {
+        cout << "Using rule 43" << endl;
+        token = lex->GetToken();
     }
+    cout << "Ending <action>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    token = lex->GetToken();
     return 0;
+}
+
+int SyntacticalAnalyzer::stmt_list(int current_rule) {
+    int errors = 0;
+    cout << "Starting <stmt_list>. Current token = " << lex->GetTokenName(token) << endl;
+    int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
+    cout << "Using rule " << next_rule << endl;
+    switch(next_rule) {
+        case 5: {
+            stmt(4);
+            stmt_list(3);
+            break;
+        }
+        case 6: {
+            break;
+        }
+    }
+    cout << "Ending <stmt_list>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    return errors;
 }
 
 int SyntacticalAnalyzer::param_list(int current_rule) {
@@ -130,7 +156,10 @@ int SyntacticalAnalyzer::define(int current_rule) {
         cout << "Error" << endl;
     token = lex->GetToken();
     param_list(8);
+    token = lex->GetToken();
     stmt(4);
+    stmt_list(3);
+    token = lex->GetToken();
     cout << "Ending <define>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return 0;
 }
@@ -162,10 +191,12 @@ int SyntacticalAnalyzer::any_other_token(int current_rule) {
         case(44): {
             token = lex->GetToken();
             more_tokens(7);
-            token = lex->GetToken();
+            break;
+            //token = lex->GetToken();
         }
         case(45):{ 
         }
+        //default: token = lex->GetToken();
     }
     token = lex->GetToken();
     cout << "Ending <any_other_token>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
@@ -197,18 +228,27 @@ int SyntacticalAnalyzer::literal(int current_rule) {
 }
 
 int SyntacticalAnalyzer::more_defines(int current_rule) {
-
+    int errors = 0;
+    cout << "Starting <more_defines>. Current token = " << lex->GetTokenName(token) << endl;
+    int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
+    cout << "Using rule " << next_rule << endl;
+    cout << "Ending <more_defines>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    return errors;
 }
 
 int SyntacticalAnalyzer::stmt(int current_rule) {
     int errors = 0;
-    token = lex->GetToken();
+    //token = lex->GetToken();
     cout << "Starting <stmt>. Current token = " << lex->GetTokenName(token) << endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     cout << "Using rule " << next_rule << endl;
     switch(next_rule) {
-        case(9): action(next_rule);
-        case(7): literal(5);
+        case 9:
+            action(next_rule);
+            break;
+        case 7:
+            literal(5);
+            break;
     }
     cout << "Ending <stmt>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return 0;
@@ -219,7 +259,7 @@ int SyntacticalAnalyzer::program ()
 /********************************************************************************/
 /* This function will								*/
 /********************************************************************************/
-    cout<< "Program function called" << endl;
+    //cout<< "Program function called" << endl;
 	lex->debug << "program function called\n";
 	p2file << "program\n";
 	int errors = 0;
@@ -245,10 +285,12 @@ int SyntacticalAnalyzer::program ()
         case 1: {
             define(next_rule);
             more_defines(2);
+            cout << "Ending <program>. Current Token = " << lex->GetTokenName(token) << ". Errors = "<< errors << endl;
+            break;
             //stmt(4);
         }
     }
-    errors += define(next_rule);
+    //errors += define(next_rule);
 	if (token != EOF_T)
 	{
 		lex->ReportError ("Expected end of file; " + lex->GetLexeme ());
@@ -262,7 +304,7 @@ int SyntacticalAnalyzer::program ()
 	// 	then keep going or keep getting token until token is
 	// 	in the follows of program
 
-cout<< "Program function called" << endl;
+    //cout<< "Program function called" << endl;
 	lex->debug << "program function returning " << errors << " errors\n";
 	return errors;
 }

@@ -22,6 +22,7 @@ class SyntacticalAnalyzer
     int define(int current_rule);
     int param_list(int current_rule);
     int stmt(int current_rule);
+    int stmt_list(int current_rule);
     int literal(int current_rule);
     int action(int current_rule);
     int quoted_lit(int current_rule);
