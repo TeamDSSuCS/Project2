@@ -30,7 +30,6 @@ class SyntacticalAnalyzer
     int any_other_token(int current_rule);
     int more_tokens(int current_rule);
     int more_defines(int current_rule);
-    int else_part(int current_rule);
     private:
 	LexicalAnalyzer * lex;
 	ofstream p2file;
