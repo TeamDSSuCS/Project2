@@ -19,6 +19,9 @@ clean :
 run: P2.out
 	./P2.out test.ss
 
+run_error: P2.out
+	./P2.out test_error.ss
+	cat test_error.p2
 submit : Project2.cpp LexicalAnalyzer.h LexicalAnalyzer.save SyntacticalAnalyzer.h SyntacticalAnalyzer.cpp makefile README.txt
 	rm -rf TeamDP2
 	mkdir TeamDP2
