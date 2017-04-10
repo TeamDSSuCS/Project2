@@ -3,5 +3,7 @@ Input file: test.ss
    2: 
    3: (define (main)
    4: 	(display (car '(a b (car ls))))
-Error at 4,32: Expected end of file; )
+   5: 	(newline)
+   6: )
+Error at 6,1: Expected end of file; )
 1 errors found in input file
