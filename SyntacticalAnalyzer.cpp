@@ -63,7 +63,35 @@ static std::map<std::string, int> token_to_col = {
 					{"LTE_T",29},
 					{"DISPLAY_T",30},
 					{"NEWLINE_T",31}};
+static std::map<std::string, int> action_token_to_rule = {
 
+    {"IF_T", 19},
+    {"LISTOP_T", 20},
+    {"CONS_T", 21},
+    {"AND_T", 22},
+    {"OR_T", 23},
+    {"NOT_T", 24},
+    {"NUMBERP_T", 25},
+    {"SYMBOLP_T", 26},
+    {"LISTP_T", 27},
+    {"ZEROP_T", 28},
+    {"NULLP_T", 29},
+    {"CHARP_T", 30},
+    {"STRINGP_T", 31},
+    {"PLUS_T", 32},
+    {"MINUS_T", 33},
+    {"DIV_T", 34},
+    {"MULT_T", 35},
+    {"EQUALTO_T", 36},
+    {"GT_T", 37},
+    {"LT_T", 38},
+    {"GTE_T", 39},
+    {"LTE_T", 40},
+    {"IDENT_T", 41},
+    {"DISPLAY_T", 42},
+    {"NEWLINE_T", 43},
+
+};
 
 
 SyntacticalAnalyzer::SyntacticalAnalyzer (char * filename) {
@@ -92,21 +120,144 @@ int SyntacticalAnalyzer::action(int current_rule) {
     int errors = 0;
     token = lex->GetToken();
     p2file << "Starting <action>. Current token = " << lex->GetTokenName(token) << endl;
-    if (lex->GetTokenName(token) == "DISPLAY_T") {
-        p2file << "Using rule 42" << endl;
-        token = lex->GetToken();
-        errors += stmt(4);
-    } else if (lex->GetTokenName(token) == "LISTOP_T") {
-        p2file << "Using rule 20" << endl;
-        token = lex->GetToken();
-        errors += stmt(4);
-    } else if (lex->GetTokenName(token) == "NEWLINE_T") {
-        p2file << "Using rule 43" << endl;
-        token = lex->GetToken();
+    current_rule = action_token_to_rule.find(lex->GetTokenName(token))->second;
+    switch(current_rule) {
+        case 19:
+            if(lex->GetTokenName(token) != "IF_T")
+                p2file << "error" << endl;
+            token = lex->GetToken();
+            stmt(4);
+            stmt(4);
+            else_part(9);
+            break;
+
+        case 20:
+            if(lex->GetTokenName(token) != "LISTOP_T")
+                p2file << "error" << endl;
+            stmt(4);
+            break;
+        case 21:
+            if(lex->GetTokenName(token) != "CONS_T")
+                p2file << "error" << endl;
+            stmt(4);
+            stmt(4);
+            break;
+        case 22:
+            if(lex->GetTokenName(token) != "AND_T")
+                p2file << "error" << endl;
+            stmt_list(3);
+            break;
+        case 23:
+            if(lex->GetTokenName(token) != "OR_T")
+                p2file << "error" << endl;
+            stmt_list(3);
+            break;
+        case 24:
+            if(lex->GetTokenName(token) != "NOT_T")
+                p2file << "error" << endl;
+            stmt(4);
+            break;
+        case 25:
+            if(lex->GetTokenName(token) != "NUMBERP_T")
+                p2file << "error" << endl;
+            stmt(4);
+            break;
+        case 26:
+            if(lex->GetTokenName(token) != "SYMBOLP_T")
+                p2file << "error" << endl;
+            stmt(4);
+            break;
+        case 27:
+            if(lex->GetTokenName(token) != "LISTP_T")
+                p2file << "error" << endl;
+            stmt(4);
+            break;
+        case 28:
+            if(lex->GetTokenName(token) != "ZEROP_T")
+                p2file << "error" << endl;
+            stmt(4);
+            break;
+        case 29:
+            if(lex->GetTokenName(token) != "NULLP_T")
+                p2file << "error" << endl;
+            stmt(4);
+            break;
+        case 30:
+            if(lex->GetTokenName(token) != "CHARP_T")
+                p2file << "error" << endl;
+            stmt(4);
+            break;
+        case 31:
+            if(lex->GetTokenName(token) != "STRINGP_T")
+                p2file << "error" << endl;
+            stmt(4);
+            break;
+        case 32:
+            if(lex->GetTokenName(token) != "PLUS_T")
+                p2file << "error" << endl;
+            stmt_list(3);
+            break;
+        case 33:
+            if(lex->GetTokenName(token) != "MINUS_T")
+                p2file << "error" << endl;
+            stmt(4);
+            stmt_list(3);
+            break;
+        case 34:
+            if(lex->GetTokenName(token) != "DIV_T")
+                p2file << "error" << endl;
+            stmt(4);
+            stmt_list(3);
+            break;
+        case 35:
+            if(lex->GetTokenName(token) != "MULT_T")
+                p2file << "error" << endl;
+            stmt_list(3);
+            break;
+        case 36:
+            if(lex->GetTokenName(token) != "EQUALTO_T")
+                p2file << "error" << endl;
+            stmt_list(3);
+            break;
+        case 37:
+            if(lex->GetTokenName(token) != "GT_T")
+                p2file << "error" << endl;
+            stmt_list(3);
+            break;
+        case 38:
+            if(lex->GetTokenName(token) != "LT_T")
+                p2file << "error" << endl;
+            stmt_list(3);
+            break;
+        case 39:
+            if(lex->GetTokenName(token) != "GTE_T")
+                p2file << "error" << endl;
+            stmt_list(3);
+            break;
+        case 40:
+            if(lex->GetTokenName(token) != "LTE_T")
+                p2file << "error" << endl;
+            stmt_list(3);
+            break;
+        case 41:
+            if(lex->GetTokenName(token) != "IDENT_T")
+                p2file << "error" << endl;
+            stmt_list(3);
+            break;
+        case 42:
+            if(lex->GetTokenName(token) != "DISPLAY_T")
+                p2file << "error" << endl;
+            stmt(4);
+            break;
+        case 43:
+            if(lex->GetTokenName(token) != "NEWLINE_T")
+                p2file << "error" << endl;
+            //stmt(4);
+            break;
     }
     p2file << "Ending <action>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     token = lex->GetToken();
-    return errors;
+    return 0;
 }
 
 int SyntacticalAnalyzer::stmt_list(int current_rule) {
@@ -135,6 +286,7 @@ int SyntacticalAnalyzer::param_list(int current_rule) {
         p2file << "Using rule 16" << endl;
     } else {
         token = lex->GetToken();
+        p2file << "Using rule 15" << endl;
         errors += param_list(8);
     }
     p2file << "Ending <param_list>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;

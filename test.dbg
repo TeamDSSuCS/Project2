@@ -24,11 +24,6 @@ program function called
 	RPAREN_T        )
 	RPAREN_T        )
 	RPAREN_T        )
-   5: 	(newline)
-	LPAREN_T        (
-	NEWLINE_T       newline
-	RPAREN_T        )
-   6: )
-	RPAREN_T        )
-program function returning 0 errors
-0 errors found in input file
+Error at 4,32: Expected end of file; )
+program function returning 1 errors
+1 errors found in input file
