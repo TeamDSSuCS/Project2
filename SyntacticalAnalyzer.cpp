@@ -128,6 +128,7 @@ int SyntacticalAnalyzer::action(int current_rule) {
                 p2file << "error" << endl;
         token = lex->GetToken();
             stmt(4);
+            //the token for stmt has already been collected
         //token = lex->GetToken();
             stmt(4);
             else_part(9);
@@ -144,6 +145,7 @@ int SyntacticalAnalyzer::action(int current_rule) {
                 p2file << "error" << endl;
         token = lex->GetToken();
             stmt(4);
+            //the token for stmt has already been collected
         //token = lex->GetToken();
             stmt(4);
             break;
