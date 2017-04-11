@@ -42,3 +42,9 @@
 	RPAREN_T        )
 	RPAREN_T        )
 	RPAREN_T        )
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
