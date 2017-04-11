@@ -1,0 +1,54 @@
+Input file: test5.ss
+program function called
+   1: (define (twothirds L)
+	LPAREN_T        (
+	DEFINE_T        define
+	LPAREN_T        (
+	IDENT_T         twothirds
+	IDENT_T         L
+	RPAREN_T        )
+   2: 	(if (list? L)
+	LPAREN_T        (
+	IF_T            if
+	LPAREN_T        (
+	LISTP_T         list?
+	IDENT_T         L
+	RPAREN_T        )
+   3: 		(if (< (length L) 3)
+	LPAREN_T        (
+	IF_T            if
+	LPAREN_T        (
+	LT_T            <
+	LPAREN_T        (
+	IDENT_T         length
+	IDENT_T         L
+	RPAREN_T        )
+	NUMLIT_T        3
+	RPAREN_T        )
+   4: 			L
+	IDENT_T         L
+   5: 			(cons (car L) (cons (cadr L) (twothirds (cdddr L))))
+	LPAREN_T        (
+	CONS_T          cons
+	LPAREN_T        (
+	LISTOP_T        car
+	IDENT_T         L
+	RPAREN_T        )
+	LPAREN_T        (
+	CONS_T          cons
+	LPAREN_T        (
+	LISTOP_T        cadr
+	IDENT_T         L
+	RPAREN_T        )
+	LPAREN_T        (
+	IDENT_T         twothirds
+	LPAREN_T        (
+	LISTOP_T        cdddr
+	IDENT_T         L
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+Error at 5,55: Expected end of file; )
+program function returning 1 errors
+1 errors found in input file
