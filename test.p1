@@ -18,3 +18,7 @@
 	RPAREN_T        )
 	RPAREN_T        )
 	RPAREN_T        )
+	LPAREN_T        (
+	NEWLINE_T       newline
+	RPAREN_T        )
+	RPAREN_T        )

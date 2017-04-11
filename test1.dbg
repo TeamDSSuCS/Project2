@@ -1,0 +1,15 @@
+Input file: test1.ss
+program function called
+   1: (define (list_sumr mylist)
+	LPAREN_T        (
+	DEFINE_T        define
+	LPAREN_T        (
+	IDENT_T         list_sumr
+	IDENT_T         mylist
+	RPAREN_T        )
+   2:   (if (list? mylist)
+	LPAREN_T        (
+	IF_T            if
+	LPAREN_T        (
+	LISTP_T         list?
+	IDENT_T         mylist
