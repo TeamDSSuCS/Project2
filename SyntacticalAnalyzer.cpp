@@ -305,7 +305,6 @@ int SyntacticalAnalyzer::stmt_list(int current_rule) {
 	  break;
         }
     case 6: 
-      //token = lex->GetToken();
       break;
         }
 
@@ -370,6 +369,8 @@ int SyntacticalAnalyzer::define(int current_rule) {
     errors += stmt(4);
     errors += stmt_list(3);
     token = lex->GetToken();
+      
+    token = lex->GetToken();
     p2file << "Ending <define>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return errors;
 }
@@ -424,7 +425,7 @@ int SyntacticalAnalyzer::quoted_lit(int current_rule) {
             errors += any_other_token(11);
           break;
     }
-    p2file << "Ending <qutoed_lit>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    p2file << "Ending <quoted_lit>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return errors;
 }
 
@@ -434,8 +435,8 @@ int SyntacticalAnalyzer::literal(int current_rule) {
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
-        case 11: 
-            errors += quoted_lit(6);
+        case 11:
+	  errors += quoted_lit(6);
             break;
         case 10:
 	  ////////
@@ -452,14 +453,14 @@ int SyntacticalAnalyzer::more_defines(int current_rule) {
     p2file << "Starting <more_defines>. Current token = " << lex->GetTokenName(token) << endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
-
     switch(next_rule) {
     case 3:
       define(1);
       more_defines(2);
       break;
     }
-    
+
+    //    token = lex->GetToken();
     
     p2file << "Ending <more_defines>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return errors;
@@ -476,8 +477,8 @@ int SyntacticalAnalyzer::stmt(int current_rule) {
             errors += action(next_rule);
             break;
         case 7:
-            errors += literal(5);
-            break;
+	  errors += literal(5);
+	  break;
         case 8:
 	  // // // 
 	  token = lex->GetToken();
