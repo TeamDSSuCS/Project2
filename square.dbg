@@ -1,0 +1,19 @@
+Input file: square.ss
+program function called
+   1: (define (square n)
+	LPAREN_T        (
+	DEFINE_T        define
+	LPAREN_T        (
+	IDENT_T         square
+	IDENT_T         n
+	RPAREN_T        )
+   2:                    (* n n)
+	LPAREN_T        (
+	MULT_T          *
+	IDENT_T         n
+	IDENT_T         n
+	RPAREN_T        )
+   3: )
+	RPAREN_T        )
+program function returning 0 errors
+0 errors found in input file

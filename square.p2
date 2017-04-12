@@ -1,0 +1,40 @@
+program
+Starting <program>. Current Token is: LPAREN_T
+Using rule 1
+Starting <define>. Current token = LPAREN_T
+Using rule 2
+Starting <param_list>. Current token = IDENT_T
+Using rule 15
+Starting <param_list>. Current token = RPAREN_T
+Using rule 16
+Ending <param_list>. Current token = RPAREN_T. Errors = 0
+Ending <param_list>. Current token = RPAREN_T. Errors = 0
+Starting <stmt>. Current token = LPAREN_T
+Using rule 9
+Starting <action>. Current token = MULT_T
+Using rule 35
+Starting <stmt_list>. Current token = IDENT_T
+Using rule 5
+Starting <stmt>. Current token = IDENT_T
+Using rule 8
+Ending <stmt>. Current token = IDENT_T. Errors = 0
+Starting <stmt_list>. Current token = IDENT_T
+Using rule 5
+Starting <stmt>. Current token = IDENT_T
+Using rule 8
+Ending <stmt>. Current token = RPAREN_T. Errors = 0
+Starting <stmt_list>. Current token = RPAREN_T
+Using rule 6
+Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
+Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
+Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
+Ending <action>. Current token = RPAREN_T. Errors = 0
+Ending <stmt>. Current token = RPAREN_T. Errors = 0
+Starting <stmt_list>. Current token = RPAREN_T
+Using rule 6
+Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
+Ending <define>. Current token = EOF_T. Errors = 0
+Starting <more_defines>. Current token = EOF_T
+Using rule 4
+Ending <more_defines>. Current token = EOF_T. Errors = 0
+Ending <program>. Current Token = EOF_T. Errors = 0

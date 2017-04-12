@@ -117,9 +117,10 @@ SyntacticalAnalyzer::~SyntacticalAnalyzer ()
 }
 
 int SyntacticalAnalyzer::action(int current_rule) {
+    // assume LPAREN_T has already bee collected
     int errors = 0;
     token = lex->GetToken();
-    p2file << "Starting <action>. Current token = " << lex->GetTokenName(token) << endl;
+    p2file << "Starting <action>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
     current_rule = action_token_to_rule.find(lex->GetTokenName(token))->second;
     p2file << "Using rule " << current_rule << endl;
     switch(current_rule) {
@@ -219,8 +220,9 @@ int SyntacticalAnalyzer::action(int current_rule) {
             if(lex->GetTokenName(token) != "MINUS_T")
                 p2file << "error" << endl;
         token = lex->GetToken();
+        // stmt_list assumes stmt didn't get another token?
             stmt(4);
-        token = lex->GetToken();
+        //token = lex->GetToken();
             stmt_list(3);
             break;
         case 34:
@@ -296,7 +298,7 @@ int SyntacticalAnalyzer::action(int current_rule) {
 
 int SyntacticalAnalyzer::stmt_list(int current_rule) {
     int errors = 0;
-    p2file << "Starting <stmt_list>. Current token = " << lex->GetTokenName(token) << endl;
+    p2file << "Starting <stmt_list>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
@@ -316,7 +318,7 @@ int SyntacticalAnalyzer::stmt_list(int current_rule) {
 
 int SyntacticalAnalyzer::param_list(int current_rule) {
     int errors = 0;
-    p2file << "Starting <param_list>. Current token = " << lex->GetTokenName(token) << endl;
+    p2file << "Starting <param_list>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
     if (lex->GetTokenName(token) == "RPAREN_T") {
         p2file << "Using rule 16" << endl;
     } else {
@@ -331,7 +333,7 @@ int SyntacticalAnalyzer::param_list(int current_rule) {
 int SyntacticalAnalyzer::else_part(int current_rule)
 {
   int errors = 0;
-  p2file << "Starting <else_part>. Current token = " << lex->GetTokenName(token) << endl;
+  p2file << "Starting <else_part>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
   int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
   p2file << "Using rule " << next_rule << endl;
   switch(next_rule) {
@@ -353,7 +355,7 @@ int SyntacticalAnalyzer::else_part(int current_rule)
 
 int SyntacticalAnalyzer::define(int current_rule) {
     int errors = 0;
-    p2file << "Starting <define>. Current token = " << lex->GetTokenName(token) << endl;
+    p2file << "Starting <define>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     token = lex->GetToken();
@@ -417,7 +419,7 @@ int SyntacticalAnalyzer::any_other_token(int current_rule) {
 int SyntacticalAnalyzer::quoted_lit(int current_rule) {
     int errors = 0;
     token = lex->GetToken();
-    p2file << "Starting <quoted_lit>. Current token = " << lex->GetTokenName(token) << endl;
+    p2file << "Starting <quoted_lit>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
@@ -431,7 +433,7 @@ int SyntacticalAnalyzer::quoted_lit(int current_rule) {
 
 int SyntacticalAnalyzer::literal(int current_rule) {
     int errors = 0;
-    p2file << "Starting <literal>. Current token = " << lex->GetTokenName(token) << endl;
+    p2file << "Starting <literal>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
@@ -440,7 +442,9 @@ int SyntacticalAnalyzer::literal(int current_rule) {
             break;
         case 10:
       ////////
+      //if(lex->GetTokenName(token) != "NUMLIT_T")  
       token = lex->GetToken();
+
       if(lex->GetTokenName(token) != "RPAREN_T")
         p2file << "error" << endl;
           break;
@@ -450,7 +454,10 @@ int SyntacticalAnalyzer::literal(int current_rule) {
 
 int SyntacticalAnalyzer::more_defines(int current_rule) {
     int errors = 0;
-    p2file << "Starting <more_defines>. Current token = " << lex->GetTokenName(token) << endl;
+    // we are done with file if RPAREN_T is found
+    if(lex->GetTokenName(token) == "RPAREN_T")
+        token = lex->GetToken();
+    p2file << "Starting <more_defines>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
 
@@ -467,9 +474,12 @@ int SyntacticalAnalyzer::more_defines(int current_rule) {
 }
 
 int SyntacticalAnalyzer::stmt(int current_rule) {
+    // statement rule 9
     int errors = 0;
+    //if( lex->GetTokenName(token) == "LPAREN_T" )
+
     //token = lex->GetToken();
-    p2file << "Starting <stmt>. Current token = " << lex->GetTokenName(token) << endl;
+    p2file << "Starting <stmt>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {

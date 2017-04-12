@@ -24,6 +24,14 @@ run_5: P2.out
 	./P2.out test5.ss
 	cat test5.p2
 
+run_square: P2.out
+	./P2.out square.ss
+	cat square.p2
+
+run_6: P2.out
+	./P2.out test6.ss
+	cat test6.p2
+
 submit : Project2.cpp LexicalAnalyzer.h LexicalAnalyzer.save SyntacticalAnalyzer.h SyntacticalAnalyzer.cpp makefile README.txt
 	rm -rf TeamDP2
 	mkdir TeamDP2

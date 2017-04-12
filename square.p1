@@ -1,0 +1,12 @@
+	LPAREN_T        (
+	DEFINE_T        define
+	LPAREN_T        (
+	IDENT_T         square
+	IDENT_T         n
+	RPAREN_T        )
+	LPAREN_T        (
+	MULT_T          *
+	IDENT_T         n
+	IDENT_T         n
+	RPAREN_T        )
+	RPAREN_T        )
