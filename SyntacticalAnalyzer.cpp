@@ -128,7 +128,7 @@ int SyntacticalAnalyzer::action(int current_rule) {
                 p2file << "error" << endl;
 	    token = lex->GetToken();
             stmt(4);
-	    token = lex->GetToken();
+	    //token = lex->GetToken();
             stmt(4);
             else_part(9);
             break;
@@ -144,8 +144,9 @@ int SyntacticalAnalyzer::action(int current_rule) {
                 p2file << "error" << endl;
 	    token = lex->GetToken();
             stmt(4);
-	    token = lex->GetToken();
-            stmt(4);
+
+	    //    token = lex->GetToken();
+	    stmt(4);
             break;
         case 22:
             if(lex->GetTokenName(token) != "AND_T")
@@ -283,8 +284,8 @@ int SyntacticalAnalyzer::action(int current_rule) {
 	    //stmt(4);
 	    
 	    token = lex->GetToken();
-	    if(lex->GetTokenName(token) != "RPAREN_T")
-	      p2file << "error" << endl;
+	    //if(lex->GetTokenName(token) != "RPAREN_T")
+	    //  p2file << "error" << endl;
             break;
     }
     p2file << "Ending <action>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
@@ -299,15 +300,15 @@ int SyntacticalAnalyzer::stmt_list(int current_rule) {
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
         case 5: {
-	    errors += stmt(4);
-	    errors += stmt_list(3);
-            break;
+	  errors += stmt(4);
+	  errors += stmt_list(3);
+	  break;
         }
-        case 6: {
-	  //	  token = lex->GetToken();
-            break;
+    case 6: 
+      //token = lex->GetToken();
+      break;
         }
-    }
+
     p2file << "Ending <stmt_list>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return errors;
 }
@@ -335,7 +336,7 @@ int SyntacticalAnalyzer::else_part(int current_rule)
   switch(next_rule) {
   case 17: {
     {
-      //token = lex->GetToken();
+      //     token = lex->GetToken();
       stmt(4);
       break;
     }
@@ -439,8 +440,8 @@ int SyntacticalAnalyzer::literal(int current_rule) {
         case 10:
 	  ////////
 	  token = lex->GetToken();
-	  if(lex->GetTokenName(token) != "RPAREN_T")
-	    p2file << "error" << endl;
+	  //if(lex->GetTokenName(token) != "RPAREN_T")
+	  //  p2file << "error" << endl;
           break;
     }
     p2file << "Ending <literal>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
@@ -480,8 +481,8 @@ int SyntacticalAnalyzer::stmt(int current_rule) {
         case 8:
 	  // // // 
 	  token = lex->GetToken();
-	  if(lex->GetTokenName(token) != "RPAREN_T")
-	    p2file << "error" << endl;
+	  //if(lex->GetTokenName(token) != "RPAREN_T")
+	  //  p2file << "error" << endl;
 	  break;
     }
     p2file << "Ending <stmt>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
