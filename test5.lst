@@ -4,5 +4,8 @@ Input file: test5.ss
    3: 		(if (< (length L) 3)
    4: 			L
    5: 			(cons (car L) (cons (cadr L) (twothirds (cdddr L))))
-Error at 5,55: Expected end of file; )
-1 errors found in input file
+   6: 		)
+   7: 		'()
+   8: 	)
+   9: )
+0 errors found in input file
