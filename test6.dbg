@@ -1,0 +1,62 @@
+Input file: test6.ss
+program function called
+   1: (define (function a)
+	LPAREN_T        (
+	DEFINE_T        define
+	LPAREN_T        (
+	IDENT_T         function
+	IDENT_T         a
+	RPAREN_T        )
+   2: 	l
+	IDENT_T         l
+   3: 	5 ; case 1
+	NUMLIT_T        5
+   4: 	(if x y n)
+	LPAREN_T        (
+	IF_T            if
+	IDENT_T         x
+	IDENT_T         y
+	IDENT_T         n
+	RPAREN_T        )
+   5: 	(if a n p)
+	LPAREN_T        (
+	IF_T            if
+	IDENT_T         a
+	IDENT_T         n
+	IDENT_T         p
+	RPAREN_T        )
+   6: 	(cadr '(a bb cc))
+	LPAREN_T        (
+	LISTOP_T        cadr
+	QUOTE_T         '
+	LPAREN_T        (
+	IDENT_T         a
+	IDENT_T         bb
+	IDENT_T         cc
+	RPAREN_T        )
+	RPAREN_T        )
+   7: 	(cdr '(a bb cc))
+	LPAREN_T        (
+	LISTOP_T        cdr
+	QUOTE_T         '
+	LPAREN_T        (
+	IDENT_T         a
+	IDENT_T         bb
+	IDENT_T         cc
+	RPAREN_T        )
+	RPAREN_T        )
+   8: 	(cddr '(a bb cc) (cons 'a '((x y) beta))
+	LPAREN_T        (
+	LISTOP_T        cddr
+	QUOTE_T         '
+	LPAREN_T        (
+	IDENT_T         a
+	IDENT_T         bb
+	IDENT_T         cc
+	RPAREN_T        )
+	LPAREN_T        (
+	CONS_T          cons
+	QUOTE_T         '
+Error at 8,25: Expected end of file; '
+program function returning 1 errors
+1 errors found in input file

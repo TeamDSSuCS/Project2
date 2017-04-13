@@ -1,8 +1,8 @@
 /********************************************************************************/
-/* Project: 									*/
-/* Author: 									*/
-/* Date: 									*/
-/* Description:									*/
+/* Project: Project 2                                   */
+/* Author:      David Tauraso, Lucas Winkelmann, Matthew Bennett                            */
+/* Date:    4/13/17                             */
+/* Description:     This analyzes the syntax of a subset of Guile Scheme                            */
 /********************************************************************************/
 
 #ifndef SYN_H

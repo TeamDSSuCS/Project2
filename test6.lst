@@ -1,0 +1,11 @@
+Input file: test6.ss
+   1: (define (function a)
+   2: 	l
+   3: 	5 ; case 1
+   4: 	(if x y n)
+   5: 	(if a n p)
+   6: 	(cadr '(a bb cc))
+   7: 	(cdr '(a bb cc))
+   8: 	(cddr '(a bb cc) (cons 'a '((x y) beta))
+Error at 8,25: Expected end of file; '
+1 errors found in input file
