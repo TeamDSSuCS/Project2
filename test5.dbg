@@ -49,6 +49,15 @@ program function called
 	RPAREN_T        )
 	RPAREN_T        )
 	RPAREN_T        )
-Error at 5,55: Expected end of file; )
-program function returning 1 errors
-1 errors found in input file
+   6: 		)
+	RPAREN_T        )
+   7: 		'()
+	QUOTE_T         '
+	LPAREN_T        (
+	RPAREN_T        )
+   8: 	)
+	RPAREN_T        )
+   9: )
+	RPAREN_T        )
+program function returning 0 errors
+0 errors found in input file
