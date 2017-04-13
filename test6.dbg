@@ -9,7 +9,7 @@ program function called
 	RPAREN_T        )
    2: 	l
 	IDENT_T         l
-   3: 	5
+   3: 	5 ; case 1
 	NUMLIT_T        5
    4: 	(if x y n)
 	LPAREN_T        (
@@ -35,7 +35,25 @@ program function called
 	IDENT_T         cc
 	RPAREN_T        )
 	RPAREN_T        )
-   7: 	(cons 'a '((x y) beta))
+   7: 	(cdr '(a bb cc))
+	LPAREN_T        (
+	LISTOP_T        cdr
+	QUOTE_T         '
+	LPAREN_T        (
+	IDENT_T         a
+	IDENT_T         bb
+	IDENT_T         cc
+	RPAREN_T        )
+	RPAREN_T        )
+   8: 	(cddr '(a bb cc) (cons 'a '((x y) beta))
+	LPAREN_T        (
+	LISTOP_T        cddr
+	QUOTE_T         '
+	LPAREN_T        (
+	IDENT_T         a
+	IDENT_T         bb
+	IDENT_T         cc
+	RPAREN_T        )
 	LPAREN_T        (
 	CONS_T          cons
 	QUOTE_T         '
@@ -49,19 +67,21 @@ program function called
 	IDENT_T         beta
 	RPAREN_T        )
 	RPAREN_T        )
-   8: 	(and 4 5)
+   9: 	(and 4 5)
 	LPAREN_T        (
 	AND_T           and
 	NUMLIT_T        4
 	NUMLIT_T        5
 	RPAREN_T        )
-   9: 	(or 7 8)
+  10: 	(or 7 8))
 	LPAREN_T        (
 	OR_T            or
 	NUMLIT_T        7
 	NUMLIT_T        8
 	RPAREN_T        )
-  10: 	(not '(ab))
+	RPAREN_T        )
+  11: 	
+  12: 	(not '(ab))
 	LPAREN_T        (
 	NOT_T           not
 	QUOTE_T         '
@@ -69,13 +89,11 @@ program function called
 	IDENT_T         ab
 	RPAREN_T        )
 	RPAREN_T        )
-  11: 	(number? 'ab)
+  13: 	(number? 'ab(symbol? (cons '5678 '()))
 	LPAREN_T        (
 	NUMBERP_T       number?
 	QUOTE_T         '
 	IDENT_T         ab
-	RPAREN_T        )
-  12: 	(symbol? (cons '5678 '()))
 	LPAREN_T        (
 	SYMBOLP_T       symbol?
 	LPAREN_T        (
@@ -87,7 +105,7 @@ program function called
 	RPAREN_T        )
 	RPAREN_T        )
 	RPAREN_T        )
-  13: 	(and (list? 87) (cons '765 '(e n 6 5 4)))
+  14: 	(and (list? 87) (cons '765 '(e n 6 5 4)))
 	LPAREN_T        (
 	AND_T           and
 	LPAREN_T        (
@@ -108,14 +126,14 @@ program function called
 	RPAREN_T        )
 	RPAREN_T        )
 	RPAREN_T        )
-  14: 	(zero? '())
+  15: 	(zero? '())
 	LPAREN_T        (
 	ZEROP_T         zero?
 	QUOTE_T         '
 	LPAREN_T        (
 	RPAREN_T        )
 	RPAREN_T        )
-  15: 	(null? '(if a b c))
+  16: 	(null? '(if a b c))
 	LPAREN_T        (
 	NULLP_T         null?
 	QUOTE_T         '
@@ -126,7 +144,7 @@ program function called
 	IDENT_T         c
 	RPAREN_T        )
 	RPAREN_T        )
-  16: 	(or (and (char? 55) (char? '())) (char? 'd))
+  17: 	(or (and (char? 55) (char? '())) (char? 'd))
 	LPAREN_T        (
 	OR_T            or
 	LPAREN_T        (
@@ -148,20 +166,22 @@ program function called
 	IDENT_T         d
 	RPAREN_T        )
 	RPAREN_T        )
-  17: 	(string? 'uytrewqsdwefgrhtyj7htgrfe)
+  18: 	(string? 'uytrewqsdwefgrhtyj7htgrfe))
 	LPAREN_T        (
 	STRINGP_T       string?
 	QUOTE_T         '
 	IDENT_T         uytrewqsdwefgrhtyj7htgrfe
 	RPAREN_T        )
-  18: 	(+ 5 'g)
+	RPAREN_T        )
+  19: 	
+  20: 	(+ 5 'g)
 	LPAREN_T        (
 	PLUS_T          +
 	NUMLIT_T        5
 	QUOTE_T         '
 	IDENT_T         g
 	RPAREN_T        )
-  19: 	(- 55 '(d))
+  21: 	(- 55 '(d))
 	LPAREN_T        (
 	MINUS_T         -
 	NUMLIT_T        55
@@ -170,7 +190,7 @@ program function called
 	IDENT_T         d
 	RPAREN_T        )
 	RPAREN_T        )
-  20: 	(- 55 '(45))
+  22: 	(- 55 '(45))
 	LPAREN_T        (
 	MINUS_T         -
 	NUMLIT_T        55
@@ -179,8 +199,247 @@ program function called
 	NUMLIT_T        45
 	RPAREN_T        )
 	RPAREN_T        )
-  21: 	;(/ a 6)
-  22: )
+  23: 	(/ a 6(* 'a 77)
+	LPAREN_T        (
+	DIV_T           /
+	IDENT_T         a
+	NUMLIT_T        6
+	LPAREN_T        (
+	MULT_T          *
+	QUOTE_T         '
+	IDENT_T         a
+	NUMLIT_T        77
+	RPAREN_T        )
+  24: 	(= 5 'a)
+	LPAREN_T        (
+	EQUALTO_T       =
+	NUMLIT_T        5
+	QUOTE_T         '
+	IDENT_T         a
+	RPAREN_T        )
+  25: 	(> 6 5)
+	LPAREN_T        (
+	GT_T            >
+	NUMLIT_T        6
+	NUMLIT_T        5
+	RPAREN_T        )
+  26: 	(< 50 (cons 'a '((x y) beta)))
+	LPAREN_T        (
+	LT_T            <
+	NUMLIT_T        50
+	LPAREN_T        (
+	CONS_T          cons
+	QUOTE_T         '
+	IDENT_T         a
+	QUOTE_T         '
+	LPAREN_T        (
+	LPAREN_T        (
+	IDENT_T         x
+	IDENT_T         y
+	RPAREN_T        )
+	IDENT_T         beta
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+  27: 	(>= 7654 'd)
+	LPAREN_T        (
+	GTE_T           >=
+	NUMLIT_T        7654
+	QUOTE_T         '
+	IDENT_T         d
+	RPAREN_T        )
+  28: 	(<= '(4 3 2) (car '(5))))
+	LPAREN_T        (
+	LTE_T           <=
+	QUOTE_T         '
+	LPAREN_T        (
+	NUMLIT_T        4
+	NUMLIT_T        3
+	NUMLIT_T        2
+	RPAREN_T        )
+	LPAREN_T        (
+	LISTOP_T        car
+	QUOTE_T         '
+	LPAREN_T        (
+	NUMLIT_T        5
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+  29: 	
+  30: 	'(lister 5 6)
+	QUOTE_T         '
+	LPAREN_T        (
+	IDENT_T         lister
+	NUMLIT_T        5
+	NUMLIT_T        6
+	RPAREN_T        )
+  31: 	(display (function a))
+	LPAREN_T        (
+	DISPLAY_T       display
+	LPAREN_T        (
+	IDENT_T         function
+	IDENT_T         a
+	RPAREN_T        )
+	RPAREN_T        )
+  32: 	(newline)
+	LPAREN_T        (
+	NEWLINE_T       newline
+	RPAREN_T        )
+  33: 
+  34: 	; case 2
+  35: 	; rule 44
+  36: 	'()
+	QUOTE_T         '
+	LPAREN_T        (
+	RPAREN_T        )
+  37: 	; remaining rules
+  38: 	'(anding)
+	QUOTE_T         '
+	LPAREN_T        (
+	IDENT_T         anding
+	RPAREN_T        )
+  39: 	'(6)
+	QUOTE_T         '
+	LPAREN_T        (
+	NUMLIT_T        6
+	RPAREN_T        )
+  40: 	'(cons)
+	QUOTE_T         '
+	LPAREN_T        (
+	CONS_T          cons
+	RPAREN_T        )
+  41: 	'(if)
+	QUOTE_T         '
+	LPAREN_T        (
+	IF_T            if
+	RPAREN_T        )
+  42: 	'(display)
+	QUOTE_T         '
+	LPAREN_T        (
+	DISPLAY_T       display
+	RPAREN_T        )
+  43: 	'(newline)
+	QUOTE_T         '
+	LPAREN_T        (
+	NEWLINE_T       newline
+	RPAREN_T        )
+  44: 	'(car'(caddr)
+	QUOTE_T         '
+	LPAREN_T        (
+	LISTOP_T        car
+	QUOTE_T         '
+	LPAREN_T        (
+	LISTOP_T        caddr
+	RPAREN_T        )
+  45: 	'(and)
+	QUOTE_T         '
+	LPAREN_T        (
+	AND_T           and
+	RPAREN_T        )
+  46: 	'(or)
+	QUOTE_T         '
+	LPAREN_T        (
+	OR_T            or
+	RPAREN_T        )
+  47: 	'(not))
+	QUOTE_T         '
+	LPAREN_T        (
+	NOT_T           not
+	RPAREN_T        )
+	RPAREN_T        )
+  48: 	
+  49: 	'(define)
+	QUOTE_T         '
+	LPAREN_T        (
+	DEFINE_T        define
+	RPAREN_T        )
+  50: 	'(number?)
+	QUOTE_T         '
+	LPAREN_T        (
+	NUMBERP_T       number?
+	RPAREN_T        )
+  51: 	'(symbol?)
+	QUOTE_T         '
+	LPAREN_T        (
+	SYMBOLP_T       symbol?
+	RPAREN_T        )
+  52: 	'(list?)
+	QUOTE_T         '
+	LPAREN_T        (
+	LISTP_T         list?
+	RPAREN_T        )
+  53: 	'(zero?)
+	QUOTE_T         '
+	LPAREN_T        (
+	ZEROP_T         zero?
+	RPAREN_T        )
+  54: 	'(null?)
+	QUOTE_T         '
+	LPAREN_T        (
+	NULLP_T         null?
+	RPAREN_T        )
+  55: 	'(char?)
+	QUOTE_T         '
+	LPAREN_T        (
+	CHARP_T         char?
+	RPAREN_T        )
+  56: 	'(string?)
+	QUOTE_T         '
+	LPAREN_T        (
+	STRINGP_T       string?
+	RPAREN_T        )
+  57: 	'(+)
+	QUOTE_T         '
+	LPAREN_T        (
+	PLUS_T          +
+	RPAREN_T        )
+  58: 	'(-)
+	QUOTE_T         '
+	LPAREN_T        (
+	MINUS_T         -
+	RPAREN_T        )
+  59: 	'(/)
+	QUOTE_T         '
+	LPAREN_T        (
+	DIV_T           /
+	RPAREN_T        )
+  60: 	'(*)
+	QUOTE_T         '
+	LPAREN_T        (
+	MULT_T          *
+	RPAREN_T        )
+  61: 	'(=)
+	QUOTE_T         '
+	LPAREN_T        (
+	EQUALTO_T       =
+	RPAREN_T        )
+  62: 	'(>)
+	QUOTE_T         '
+	LPAREN_T        (
+	GT_T            >
+	RPAREN_T        )
+  63: 	'(<)
+	QUOTE_T         '
+	LPAREN_T        (
+	LT_T            <
+	RPAREN_T        )
+  64: 	'(>=)
+	QUOTE_T         '
+	LPAREN_T        (
+	GTE_T           >=
+	RPAREN_T        )
+  65: 	'(<=)
+	QUOTE_T         '
+	LPAREN_T        (
+	LTE_T           <=
+	RPAREN_T        )
+  66: 	'(')
+	QUOTE_T         '
+	LPAREN_T        (
+	QUOTE_T         '
+	RPAREN_T        )
+  67: )
 	RPAREN_T        )
 program function returning 0 errors
 0 errors found in input file

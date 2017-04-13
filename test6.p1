@@ -28,6 +28,23 @@
 	RPAREN_T        )
 	RPAREN_T        )
 	LPAREN_T        (
+	LISTOP_T        cdr
+	QUOTE_T         '
+	LPAREN_T        (
+	IDENT_T         a
+	IDENT_T         bb
+	IDENT_T         cc
+	RPAREN_T        )
+	RPAREN_T        )
+	LPAREN_T        (
+	LISTOP_T        cddr
+	QUOTE_T         '
+	LPAREN_T        (
+	IDENT_T         a
+	IDENT_T         bb
+	IDENT_T         cc
+	RPAREN_T        )
+	LPAREN_T        (
 	CONS_T          cons
 	QUOTE_T         '
 	IDENT_T         a
@@ -50,6 +67,7 @@
 	NUMLIT_T        7
 	NUMLIT_T        8
 	RPAREN_T        )
+	RPAREN_T        )
 	LPAREN_T        (
 	NOT_T           not
 	QUOTE_T         '
@@ -61,7 +79,6 @@
 	NUMBERP_T       number?
 	QUOTE_T         '
 	IDENT_T         ab
-	RPAREN_T        )
 	LPAREN_T        (
 	SYMBOLP_T       symbol?
 	LPAREN_T        (
@@ -135,6 +152,7 @@
 	QUOTE_T         '
 	IDENT_T         uytrewqsdwefgrhtyj7htgrfe
 	RPAREN_T        )
+	RPAREN_T        )
 	LPAREN_T        (
 	PLUS_T          +
 	NUMLIT_T        5
@@ -156,5 +174,201 @@
 	LPAREN_T        (
 	NUMLIT_T        45
 	RPAREN_T        )
+	RPAREN_T        )
+	LPAREN_T        (
+	DIV_T           /
+	IDENT_T         a
+	NUMLIT_T        6
+	LPAREN_T        (
+	MULT_T          *
+	QUOTE_T         '
+	IDENT_T         a
+	NUMLIT_T        77
+	RPAREN_T        )
+	LPAREN_T        (
+	EQUALTO_T       =
+	NUMLIT_T        5
+	QUOTE_T         '
+	IDENT_T         a
+	RPAREN_T        )
+	LPAREN_T        (
+	GT_T            >
+	NUMLIT_T        6
+	NUMLIT_T        5
+	RPAREN_T        )
+	LPAREN_T        (
+	LT_T            <
+	NUMLIT_T        50
+	LPAREN_T        (
+	CONS_T          cons
+	QUOTE_T         '
+	IDENT_T         a
+	QUOTE_T         '
+	LPAREN_T        (
+	LPAREN_T        (
+	IDENT_T         x
+	IDENT_T         y
+	RPAREN_T        )
+	IDENT_T         beta
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+	LPAREN_T        (
+	GTE_T           >=
+	NUMLIT_T        7654
+	QUOTE_T         '
+	IDENT_T         d
+	RPAREN_T        )
+	LPAREN_T        (
+	LTE_T           <=
+	QUOTE_T         '
+	LPAREN_T        (
+	NUMLIT_T        4
+	NUMLIT_T        3
+	NUMLIT_T        2
+	RPAREN_T        )
+	LPAREN_T        (
+	LISTOP_T        car
+	QUOTE_T         '
+	LPAREN_T        (
+	NUMLIT_T        5
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	IDENT_T         lister
+	NUMLIT_T        5
+	NUMLIT_T        6
+	RPAREN_T        )
+	LPAREN_T        (
+	DISPLAY_T       display
+	LPAREN_T        (
+	IDENT_T         function
+	IDENT_T         a
+	RPAREN_T        )
+	RPAREN_T        )
+	LPAREN_T        (
+	NEWLINE_T       newline
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	IDENT_T         anding
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	NUMLIT_T        6
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	CONS_T          cons
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	IF_T            if
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	DISPLAY_T       display
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	NEWLINE_T       newline
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	LISTOP_T        car
+	QUOTE_T         '
+	LPAREN_T        (
+	LISTOP_T        caddr
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	AND_T           and
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	OR_T            or
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	NOT_T           not
+	RPAREN_T        )
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	DEFINE_T        define
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	NUMBERP_T       number?
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	SYMBOLP_T       symbol?
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	LISTP_T         list?
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	ZEROP_T         zero?
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	NULLP_T         null?
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	CHARP_T         char?
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	STRINGP_T       string?
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	PLUS_T          +
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	MINUS_T         -
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	DIV_T           /
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	MULT_T          *
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	EQUALTO_T       =
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	GT_T            >
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	LT_T            <
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	GTE_T           >=
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	LTE_T           <=
+	RPAREN_T        )
+	QUOTE_T         '
+	LPAREN_T        (
+	QUOTE_T         '
 	RPAREN_T        )
 	RPAREN_T        )

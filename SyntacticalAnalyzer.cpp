@@ -230,7 +230,7 @@ int SyntacticalAnalyzer::action(int current_rule) {
                 p2file << "error" << endl;
         token = lex->GetToken();
             stmt(4);
-        token = lex->GetToken();
+        //token = lex->GetToken();
             stmt_list(3);
             break;
         case 35:
@@ -291,13 +291,16 @@ int SyntacticalAnalyzer::action(int current_rule) {
           p2file << "error" << endl;
             break;
     }
-    p2file << "Ending <action>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    p2file << "Ending <action>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << " Lex: " << lex->GetLexeme()<< endl;
+    //  LISTOP_T case causes end of action to end in LPAREN_T
+    if(lex->GetTokenName(token) != "LPAREN_T")
     token = lex->GetToken();
     return 0;
 }
 
 int SyntacticalAnalyzer::stmt_list(int current_rule) {
     int errors = 0;
+
     p2file << "Starting <stmt_list>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
@@ -312,7 +315,7 @@ int SyntacticalAnalyzer::stmt_list(int current_rule) {
             break;
         }
     }
-    p2file << "Ending <stmt_list>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    p2file << "Ending <stmt_list>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << " Lex: " << lex->GetLexeme()<< endl;
     return errors;
 }
 
@@ -326,7 +329,7 @@ int SyntacticalAnalyzer::param_list(int current_rule) {
         p2file << "Using rule 15" << endl;
         errors += param_list(8);
     }
-    p2file << "Ending <param_list>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    p2file << "Ending <param_list>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << " Lex: " << lex->GetLexeme()<< endl;
     return errors;
 }
 
@@ -349,7 +352,7 @@ int SyntacticalAnalyzer::else_part(int current_rule)
       }
      }
   }
-  p2file << "Ending <else_part>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+  p2file << "Ending <else_part>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << " Lex: " << lex->GetLexeme()<< endl;
   return errors;
 }
 
@@ -373,7 +376,7 @@ int SyntacticalAnalyzer::define(int current_rule) {
     errors += stmt(4);
     errors += stmt_list(3);
     token = lex->GetToken();
-    p2file << "Ending <define>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    p2file << "Ending <define>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << " Lex: " << lex->GetLexeme()<< endl;
     return errors;
 }
 
@@ -393,7 +396,7 @@ int SyntacticalAnalyzer::more_tokens(int current_rule) {
       break;
         }
     }
-    p2file << "Ending <more_tokens>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    p2file << "Ending <more_tokens>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << " Lex: " << lex->GetLexeme()<< endl;
     return errors;
 }
 
@@ -412,7 +415,7 @@ int SyntacticalAnalyzer::any_other_token(int current_rule) {
       break;
     }
     token = lex->GetToken();
-    p2file << "Ending <any_other_token>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    p2file << "Ending <any_other_token>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << " Lex: " << lex->GetLexeme()<< endl;
     return errors;
 }
 
@@ -427,7 +430,7 @@ int SyntacticalAnalyzer::quoted_lit(int current_rule) {
             errors += any_other_token(11);
           break;
     }
-    p2file << "Ending <qutoed_lit>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    p2file << "Ending <qutoed_lit>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << " Lex: " << lex->GetLexeme()<< endl;
     return errors;
 }
 
@@ -449,7 +452,7 @@ int SyntacticalAnalyzer::literal(int current_rule) {
         p2file << "error" << endl;
           break;
     }
-    p2file << "Ending <literal>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    p2file << "Ending <literal>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << " Lex: " << lex->GetLexeme()<< endl;
 }
 
 int SyntacticalAnalyzer::more_defines(int current_rule) {
@@ -469,16 +472,17 @@ int SyntacticalAnalyzer::more_defines(int current_rule) {
     }
     
     
-    p2file << "Ending <more_defines>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    p2file << "Ending <more_defines>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << " Lex: " << lex->GetLexeme()<< endl;
     return errors;
 }
 
 int SyntacticalAnalyzer::stmt(int current_rule) {
     // statement rule 9
     int errors = 0;
-    //if( lex->GetTokenName(token) == "LPAREN_T" )
+    // stmt must not begin with RPAREN_T
+    if( lex->GetTokenName(token) == "RPAREN_T" )
 
-    //token = lex->GetToken();
+    token = lex->GetToken();
     p2file << "Starting <stmt>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
@@ -496,7 +500,7 @@ int SyntacticalAnalyzer::stmt(int current_rule) {
         //p2file << "error" << endl;
       break;
     }
-    p2file << "Ending <stmt>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    p2file << "Ending <stmt>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << " Lex: " << lex->GetLexeme()<< endl;
     return errors;
 }
 
@@ -531,7 +535,7 @@ int SyntacticalAnalyzer::program ()
         case 1: {
             errors += define(next_rule);
             errors += more_defines(2);
-            p2file << "Ending <program>. Current Token = " << lex->GetTokenName(token) << ". Errors = "<< errors << endl;
+            p2file << "Ending <program>. Current Token = " << lex->GetTokenName(token) << ". Errors = "<< errors << " Lex: " << lex->GetLexeme()<< endl;
             break;
             //stmt(4);
         }

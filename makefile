@@ -17,18 +17,22 @@ clean :
 	rm *.o P2.out *.gch
 
 run: P2.out
+	clear
 	./P2.out test.ss
 	cat test.p2
 
 run_5: P2.out
+	clear
 	./P2.out test5.ss
 	cat test5.p2
 
 run_square: P2.out
+	clear
 	./P2.out square.ss
 	cat square.p2
 
 run_6: P2.out
+	clear
 	./P2.out test6.ss
 	cat test6.p2
 
