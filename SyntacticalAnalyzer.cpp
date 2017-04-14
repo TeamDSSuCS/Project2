@@ -1,8 +1,8 @@
 /********************************************************************************/
-/* Project: 									*/
-/* Author: 									*/
-/* Date: 									*/
-/* Description:									*/
+/* Project: Project 2									*/
+/* Author: 		David Tauraso, Lucas Winkelmann, Matthew Bennett							*/
+/* Date: 	4/13/17								*/
+/* Description:		This analyzes the syntax of a subset of Guile Scheme							*/
 /********************************************************************************/
 
 #include <iostream>
@@ -117,6 +117,8 @@ SyntacticalAnalyzer::~SyntacticalAnalyzer ()
 }
 
 int SyntacticalAnalyzer::action(int current_rule) {
+    // the first tokens for each action rule has already been read in
+    // this function reads in 1 token for stmt
     int errors = 0;
     token = lex->GetToken();
     p2file << "Starting <action>. Current token = " << lex->GetTokenName(token) << endl;
@@ -126,9 +128,9 @@ int SyntacticalAnalyzer::action(int current_rule) {
         case 19:
             if(lex->GetTokenName(token) != "IF_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
-	    //token = lex->GetToken();
+        //token = lex->GetToken();
             stmt(4);
             else_part(9);
             break;
@@ -136,156 +138,156 @@ int SyntacticalAnalyzer::action(int current_rule) {
         case 20:
             if(lex->GetTokenName(token) != "LISTOP_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
             break;
         case 21:
             if(lex->GetTokenName(token) != "CONS_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
 
-	    //    token = lex->GetToken();
-	    stmt(4);
+        //    token = lex->GetToken();
+        stmt(4);
             break;
         case 22:
             if(lex->GetTokenName(token) != "AND_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt_list(3);
             break;
         case 23:
             if(lex->GetTokenName(token) != "OR_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt_list(3);
             break;
         case 24:
             if(lex->GetTokenName(token) != "NOT_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
             break;
         case 25:
             if(lex->GetTokenName(token) != "NUMBERP_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
             break;
         case 26:
             if(lex->GetTokenName(token) != "SYMBOLP_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
             break;
         case 27:
             if(lex->GetTokenName(token) != "LISTP_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
             break;
         case 28:
             if(lex->GetTokenName(token) != "ZEROP_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
             break;
         case 29:
             if(lex->GetTokenName(token) != "NULLP_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
             break;
         case 30:
             if(lex->GetTokenName(token) != "CHARP_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
             break;
         case 31:
             if(lex->GetTokenName(token) != "STRINGP_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
             break;
         case 32:
             if(lex->GetTokenName(token) != "PLUS_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt_list(3);
             break;
         case 33:
             if(lex->GetTokenName(token) != "MINUS_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt_list(3);
             break;
         case 34:
             if(lex->GetTokenName(token) != "DIV_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt_list(3);
             break;
         case 35:
             if(lex->GetTokenName(token) != "MULT_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt_list(3);
             break;
         case 36:
             if(lex->GetTokenName(token) != "EQUALTO_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt_list(3);
             break;
         case 37:
             if(lex->GetTokenName(token) != "GT_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt_list(3);
             break;
         case 38:
             if(lex->GetTokenName(token) != "LT_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt_list(3);
             break;
         case 39:
             if(lex->GetTokenName(token) != "GTE_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt_list(3);
             break;
         case 40:
             if(lex->GetTokenName(token) != "LTE_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt_list(3);
             break;
         case 41:
             if(lex->GetTokenName(token) != "IDENT_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt_list(3);
             break;
         case 42:
             if(lex->GetTokenName(token) != "DISPLAY_T")
                 p2file << "error" << endl;
-	    token = lex->GetToken();
+        token = lex->GetToken();
             stmt(4);
             break;
         case 43:
             if(lex->GetTokenName(token) != "NEWLINE_T")
                 p2file << "error" << endl;
-	    //stmt(4);
-	    
-	    token = lex->GetToken();
-	    //if(lex->GetTokenName(token) != "RPAREN_T")
-	    //  p2file << "error" << endl;
+        //stmt(4);
+        
+        token = lex->GetToken();
+        //if(lex->GetTokenName(token) != "RPAREN_T")
+        //  p2file << "error" << endl;
             break;
     }
     p2file << "Ending <action>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
@@ -294,15 +296,18 @@ int SyntacticalAnalyzer::action(int current_rule) {
 }
 
 int SyntacticalAnalyzer::stmt_list(int current_rule) {
+    // there are no terminals to read in for the stmt_list rules so call the function 
+    //representing the next rule
+    // the next rule depends on what the stmt_list rule is
     int errors = 0;
     p2file << "Starting <stmt_list>. Current token = " << lex->GetTokenName(token) << endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
     p2file << "Using rule " << next_rule << endl;
     switch(next_rule) {
         case 5: {
-	  errors += stmt(4);
-	  errors += stmt_list(3);
-	  break;
+      errors += stmt(4);
+      errors += stmt_list(3);
+      break;
         }
     case 6: 
       //token = lex->GetToken();
@@ -314,6 +319,7 @@ int SyntacticalAnalyzer::stmt_list(int current_rule) {
 }
 
 int SyntacticalAnalyzer::param_list(int current_rule) {
+    // IDENT_T should have already been collected
     int errors = 0;
     p2file << "Starting <param_list>. Current token = " << lex->GetTokenName(token) << endl;
     if (lex->GetTokenName(token) == "RPAREN_T") {
@@ -329,6 +335,8 @@ int SyntacticalAnalyzer::param_list(int current_rule) {
 
 int SyntacticalAnalyzer::else_part(int current_rule)
 {
+    // any token collect in caller of else_part has already collected a token from stmt
+    // don't collect any tokens
   int errors = 0;
   p2file << "Starting <else_part>. Current token = " << lex->GetTokenName(token) << endl;
   int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
@@ -342,7 +350,7 @@ int SyntacticalAnalyzer::else_part(int current_rule)
     }
     case 18:
       {
-	break;
+    break;
       }
      }
   }
@@ -351,6 +359,8 @@ int SyntacticalAnalyzer::else_part(int current_rule)
 }
 
 int SyntacticalAnalyzer::define(int current_rule) {
+    // starts collecting tokens.
+    // collects token for paramlist so param_list wiill not collect a token in any of the rules it represents
     int errors = 0;
     p2file << "Starting <define>. Current token = " << lex->GetTokenName(token) << endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
@@ -375,6 +385,8 @@ int SyntacticalAnalyzer::define(int current_rule) {
 }
 
 int SyntacticalAnalyzer::more_tokens(int current_rule) {
+    // the first token for the rules of any_other_token has already been collected
+    // don't need to collect any tokens
     int errors = 0;
     p2file << "Starting <more_tokens>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
@@ -386,8 +398,8 @@ int SyntacticalAnalyzer::more_tokens(int current_rule) {
             break;
             }
         case 14: {
-	
-	  break;
+    
+      break;
         }
     }
     p2file << "Ending <more_tokens>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
@@ -395,6 +407,8 @@ int SyntacticalAnalyzer::more_tokens(int current_rule) {
 }
 
 int SyntacticalAnalyzer::any_other_token(int current_rule) {
+    // the token has already been collected by whoever called more_tokens except for rule 44
+    // only need to collect token for rule 44
     int errors = 0;
     p2file << "Starting <any_other_token>. Current token = " << lex->GetTokenName(token) << " Lex: " << lex->GetLexeme()<< endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
@@ -406,14 +420,16 @@ int SyntacticalAnalyzer::any_other_token(int current_rule) {
             break;
         }
         default:
-	  break;
-	}
+      break;
+    }
     token = lex->GetToken();
     p2file << "Ending <any_other_token>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return errors;
 }
 
 int SyntacticalAnalyzer::quoted_lit(int current_rule) {
+    // the token has not been collected for any_other_token so collect token
+    // then call any_other_token
     int errors = 0;
     token = lex->GetToken();
     p2file << "Starting <quoted_lit>. Current token = " << lex->GetTokenName(token) << endl;
@@ -429,6 +445,8 @@ int SyntacticalAnalyzer::quoted_lit(int current_rule) {
 }
 
 int SyntacticalAnalyzer::literal(int current_rule) {
+    // the first token for literal has already been collected
+    // only need to collect token for rule 10
     int errors = 0;
     p2file << "Starting <literal>. Current token = " << lex->GetTokenName(token) << endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
@@ -438,16 +456,18 @@ int SyntacticalAnalyzer::literal(int current_rule) {
             errors += quoted_lit(6);
             break;
         case 10:
-	  ////////
-	  token = lex->GetToken();
-	  //if(lex->GetTokenName(token) != "RPAREN_T")
-	  //  p2file << "error" << endl;
+      ////////
+      token = lex->GetToken();
+      //if(lex->GetTokenName(token) != "RPAREN_T")
+      //  p2file << "error" << endl;
           break;
     }
     p2file << "Ending <literal>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
 }
 
 int SyntacticalAnalyzer::more_defines(int current_rule) {
+    // the first token for define has already been collected
+    // no need to collect token for define and more_defines
     int errors = 0;
     p2file << "Starting <more_defines>. Current token = " << lex->GetTokenName(token) << endl;
     int next_rule = ll1table[current_rule][token_to_col.find(lex->GetTokenName(token))->second];
@@ -466,6 +486,8 @@ int SyntacticalAnalyzer::more_defines(int current_rule) {
 }
 
 int SyntacticalAnalyzer::stmt(int current_rule) {
+    // LPAREN_T has already been collected
+    // no need to collect any token except for rule 8
     int errors = 0;
     //token = lex->GetToken();
     p2file << "Starting <stmt>. Current token = " << lex->GetTokenName(token) << endl;
@@ -479,11 +501,11 @@ int SyntacticalAnalyzer::stmt(int current_rule) {
             errors += literal(5);
             break;
         case 8:
-	  // // // 
-	  token = lex->GetToken();
-	  //if(lex->GetTokenName(token) != "RPAREN_T")
-	  //  p2file << "error" << endl;
-	  break;
+      // // // 
+      token = lex->GetToken();
+      //if(lex->GetTokenName(token) != "RPAREN_T")
+      //  p2file << "error" << endl;
+      break;
     }
     p2file << "Ending <stmt>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
     return errors;
@@ -492,23 +514,23 @@ int SyntacticalAnalyzer::stmt(int current_rule) {
 int SyntacticalAnalyzer::program ()
 {
 /********************************************************************************/
-/* This function will								*/
+/* This function will                               */
 /********************************************************************************/
     //p2file<< "Program function called" << endl;
-	lex->debug << "program function called\n";
-	p2file<< "program\n";
-	int errors = 0;
-	// dfa evaluator
-	// token should be in the firsts of program
-	// if true... keep going
-	// if false...
-	// Error message -
-	// 	then keep going or keep getting token until token is
-	// 	in the firsts of program
+    lex->debug << "program function called\n";
+    p2file<< "program\n";
+    int errors = 0;
+    // dfa evaluator
+    // token should be in the firsts of program
+    // if true... keep going
+    // if false...
+    // Error message -
+    //  then keep going or keep getting token until token is
+    //  in the firsts of program
 
-	// errors += define ();
+    // errors += define ();
 
-	// errors += more_defines ();
+    // errors += more_defines ();
 
     p2file << "Starting <program>. ";
     int current_rule = 0;
@@ -526,21 +548,20 @@ int SyntacticalAnalyzer::program ()
         }
     }
     //errors += define(next_rule);
-	if (token != EOF_T)
-	{
-		lex->ReportError ("Expected end of file; " + lex->GetLexeme ());
-		errors++;
-	}
+    if (token != EOF_T)
+    {
+        lex->ReportError ("Expected end of file; " + lex->GetLexeme ());
+        errors++;
+    }
 
-	// token should be in the follows of program
-	// if true... keep going
-	// if false...
-	// Error message -
-	// 	then keep going or keep getting token until token is
-	// 	in the follows of program
+    // token should be in the follows of program
+    // if true... keep going
+    // if false...
+    // Error message -
+    //  then keep going or keep getting token until token is
+    //  in the follows of program
 
     //std::p2File<< "Program function called" << endl;
-	lex->debug << "program function returning " << errors << " errors\n";
-	return errors;
+    lex->debug << "program function returning " << errors << " errors\n";
+    return errors;
 }
-
