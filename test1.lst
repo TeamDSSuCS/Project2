@@ -1,3 +1,13 @@
 Input file: test1.ss
    1: (define (list_sumr mylist)
    2:   (if (list? mylist)
+   3:       (if (null? mylist)
+   4: 	  0
+   5: 	  (if (number? (car mylist))
+   6: 	      (+ (car mylist) (list_sumr (cdr mylist)))
+   7: 	      (list_sumr (cdr mylist))))
+   8:       'list_sumr requires a list argument'
+   9:       )
+  10:   )
+  11: 
+0 errors found in input file

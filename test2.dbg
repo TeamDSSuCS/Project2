@@ -1,0 +1,124 @@
+Input file: test2.ss
+program function called
+   1: (define (main args)
+	LPAREN_T        (
+	DEFINE_T        define
+	LPAREN_T        (
+	IDENT_T         main
+	IDENT_T         args
+	RPAREN_T        )
+   2:   (if (not (list? args))
+	LPAREN_T        (
+	IF_T            if
+	LPAREN_T        (
+	NOT_T           not
+	LPAREN_T        (
+	LISTP_T         list?
+	IDENT_T         args
+	RPAREN_T        )
+	RPAREN_T        )
+   3:       'Arguments to main must be in a list'
+	QUOTE_T         '
+	IDENT_T         Arguments
+	IDENT_T         to
+	IDENT_T         main
+	IDENT_T         must
+	IDENT_T         be
+	IDENT_T         in
+	IDENT_T         a
+	IDENT_T         list
+	QUOTE_T         '
+   4:       (
+	LPAREN_T        (
+   5:        (display (list_sumr args))
+	LPAREN_T        (
+	DISPLAY_T       display
+	LPAREN_T        (
+	IDENT_T         list_sumr
+	IDENT_T         args
+	RPAREN_T        )
+	RPAREN_T        )
+   6:        (newline)
+	LPAREN_T        (
+	NEWLINE_T       newline
+	RPAREN_T        )
+   7:        (display (insert_last 'value args))
+	LPAREN_T        (
+	DISPLAY_T       display
+	LPAREN_T        (
+	IDENT_T         insert_last
+	QUOTE_T         '
+	IDENT_T         value
+	IDENT_T         args
+	RPAREN_T        )
+	RPAREN_T        )
+   8:        (newline)
+	LPAREN_T        (
+	NEWLINE_T       newline
+	RPAREN_T        )
+   9:        (display (remove_last args))
+	LPAREN_T        (
+	DISPLAY_T       display
+	LPAREN_T        (
+	IDENT_T         remove_last
+	IDENT_T         args
+	RPAREN_T        )
+	RPAREN_T        )
+  10:        (newline)
+	LPAREN_T        (
+	NEWLINE_T       newline
+	RPAREN_T        )
+  11:        (display (list_reverse args))
+	LPAREN_T        (
+	DISPLAY_T       display
+	LPAREN_T        (
+	IDENT_T         list_reverse
+	IDENT_T         args
+	RPAREN_T        )
+	RPAREN_T        )
+  12:        (newline)
+	LPAREN_T        (
+	NEWLINE_T       newline
+	RPAREN_T        )
+  13:        (display (insert_last 'value (list_reverse args)))
+	LPAREN_T        (
+	DISPLAY_T       display
+	LPAREN_T        (
+	IDENT_T         insert_last
+	QUOTE_T         '
+	IDENT_T         value
+	LPAREN_T        (
+	IDENT_T         list_reverse
+	IDENT_T         args
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+  14:        (newline)
+	LPAREN_T        (
+	NEWLINE_T       newline
+	RPAREN_T        )
+  15:        (display (list_reverse (insert_last 'value args)))
+	LPAREN_T        (
+	DISPLAY_T       display
+	LPAREN_T        (
+	IDENT_T         list_reverse
+	LPAREN_T        (
+	IDENT_T         insert_last
+	QUOTE_T         '
+	IDENT_T         value
+	IDENT_T         args
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+  16:        (newline)
+	LPAREN_T        (
+	NEWLINE_T       newline
+	RPAREN_T        )
+  17:        )
+	RPAREN_T        )
+  18:       )
+	RPAREN_T        )
+  19:   )
+	RPAREN_T        )
+program function returning 0 errors
+0 errors found in input file

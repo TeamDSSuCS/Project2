@@ -1,0 +1,21 @@
+Input file: test2.ss
+   1: (define (main args)
+   2:   (if (not (list? args))
+   3:       'Arguments to main must be in a list'
+   4:       (
+   5:        (display (list_sumr args))
+   6:        (newline)
+   7:        (display (insert_last 'value args))
+   8:        (newline)
+   9:        (display (remove_last args))
+  10:        (newline)
+  11:        (display (list_reverse args))
+  12:        (newline)
+  13:        (display (insert_last 'value (list_reverse args)))
+  14:        (newline)
+  15:        (display (list_reverse (insert_last 'value args)))
+  16:        (newline)
+  17:        )
+  18:       )
+  19:   )
+0 errors found in input file

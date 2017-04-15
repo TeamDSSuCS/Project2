@@ -59,7 +59,7 @@ Ending <more_tokens>. Current token = RPAREN_T. Errors = 0
 Ending <more_tokens>. Current token = RPAREN_T. Errors = 0
 Ending <more_tokens>. Current token = RPAREN_T. Errors = 0
 Ending <any_other_token>. Current token = RPAREN_T. Errors = 0
-Ending <qutoed_lit>. Current token = RPAREN_T. Errors = 0
+Ending <quoted_lit>. Current token = RPAREN_T. Errors = 0
 Ending <literal>. Current token = RPAREN_T. Errors = 0
 Ending <stmt>. Current token = RPAREN_T. Errors = 0
 Ending <action>. Current token = RPAREN_T. Errors = 0

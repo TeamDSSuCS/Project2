@@ -13,3 +13,63 @@ program function called
 	LPAREN_T        (
 	LISTP_T         list?
 	IDENT_T         mylist
+	RPAREN_T        )
+   3:       (if (null? mylist)
+	LPAREN_T        (
+	IF_T            if
+	LPAREN_T        (
+	NULLP_T         null?
+	IDENT_T         mylist
+	RPAREN_T        )
+   4: 	  0
+	NUMLIT_T        0
+   5: 	  (if (number? (car mylist))
+	LPAREN_T        (
+	IF_T            if
+	LPAREN_T        (
+	NUMBERP_T       number?
+	LPAREN_T        (
+	LISTOP_T        car
+	IDENT_T         mylist
+	RPAREN_T        )
+	RPAREN_T        )
+   6: 	      (+ (car mylist) (list_sumr (cdr mylist)))
+	LPAREN_T        (
+	PLUS_T          +
+	LPAREN_T        (
+	LISTOP_T        car
+	IDENT_T         mylist
+	RPAREN_T        )
+	LPAREN_T        (
+	IDENT_T         list_sumr
+	LPAREN_T        (
+	LISTOP_T        cdr
+	IDENT_T         mylist
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+   7: 	      (list_sumr (cdr mylist))))
+	LPAREN_T        (
+	IDENT_T         list_sumr
+	LPAREN_T        (
+	LISTOP_T        cdr
+	IDENT_T         mylist
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+   8:       'list_sumr requires a list argument'
+	QUOTE_T         '
+	IDENT_T         list_sumr
+	IDENT_T         requires
+	IDENT_T         a
+	IDENT_T         list
+	IDENT_T         argument
+	QUOTE_T         '
+   9:       )
+	RPAREN_T        )
+  10:   )
+	RPAREN_T        )
+  11: 
+program function returning 0 errors
+0 errors found in input file

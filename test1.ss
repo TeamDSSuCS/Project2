@@ -5,6 +5,7 @@
 	  (if (number? (car mylist))
 	      (+ (car mylist) (list_sumr (cdr mylist)))
 	      (list_sumr (cdr mylist))))
-      "list_sumr requires a list argument"
+      'list_sumr requires a list argument'
       )
   )
+
