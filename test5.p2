@@ -129,13 +129,13 @@ Starting <literal>. Current token = QUOTE_T
 Using rule 11
 Starting <quoted_lit>. Current token = LPAREN_T
 Using rule 12
-Starting <any_other_token>. Current token = LPAREN_T Lex: (
+Starting <any_other_token>. Current token = LPAREN_T. Errors = 0
 Using rule 44
-Starting <more_tokens>. Current token = RPAREN_T Lex: )
+Starting <more_tokens>. Current token = RPAREN_T. Errors = 0
 Using rule 14
 Ending <more_tokens>. Current token = RPAREN_T. Errors = 0
 Ending <any_other_token>. Current token = RPAREN_T. Errors = 0
-Ending <qutoed_lit>. Current token = RPAREN_T. Errors = 0
+Ending <quoted_lit>. Current token = RPAREN_T. Errors = 0
 Ending <literal>. Current token = RPAREN_T. Errors = 0
 Ending <stmt>. Current token = RPAREN_T. Errors = 0
 Ending <else_part>. Current token = RPAREN_T. Errors = 0
