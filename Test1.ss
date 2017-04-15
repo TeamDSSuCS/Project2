@@ -1,0 +1,6 @@
+(define (arithmetic a b c)
+  (if (not (= 0 b))
+      (+ (/ (* a (- b c)) 2) (- (/ a b) 2 c))
+      (+ (/ (* a (- b c)) 2) (- (/ a 4) 2 c))
+      )
+  )

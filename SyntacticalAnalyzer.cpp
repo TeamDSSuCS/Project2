@@ -217,7 +217,6 @@ int SyntacticalAnalyzer::action(int current_rule) {
       p2file << "error" << endl;
     token = lex->GetToken();
     errors += stmt(4);
-    token = lex->GetToken();
     errors += stmt_list(3);
     break;
   case 34:
@@ -225,7 +224,6 @@ int SyntacticalAnalyzer::action(int current_rule) {
       p2file << "error" << endl;
     token = lex->GetToken();
     errors += stmt(4);
-    //    token = lex->GetToken();
     errors += stmt_list(3);
     break;
   case 35:
@@ -299,7 +297,7 @@ int SyntacticalAnalyzer::stmt_list(int current_rule) {
     errors += stmt(4);
     errors += stmt_list(3);
     break;
-  }
+  } 
   case 6: 
     break;
   }
@@ -369,9 +367,7 @@ int SyntacticalAnalyzer::define(int current_rule) {
   errors += stmt(4);
   errors += stmt_list(3);
   token = lex->GetToken();
-  ///
-  //  token = lex->GetToken();
-  p2file << "Ending <define>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
+    p2file << "Ending <define>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
   return errors;
 }
 
@@ -410,7 +406,6 @@ int SyntacticalAnalyzer::any_other_token(int current_rule) {
     break;
   }
   default:
-    //    token = lex->GetToken();
     break;
   }
   token = lex->GetToken();
@@ -444,8 +439,8 @@ int SyntacticalAnalyzer::literal(int current_rule) {
   p2file << "Using rule " << next_rule << endl;
   switch(next_rule) {
   case 11:
-      errors += quoted_lit(6);
-      break;
+    errors += quoted_lit(6);
+    break;
   case 10:
     token = lex->GetToken();
     break;
@@ -488,7 +483,7 @@ int SyntacticalAnalyzer::stmt(int current_rule) {
   case 8:
     token = lex->GetToken();
     break;
-  }
+  } 
   p2file << "Ending <stmt>. Current token = " << lex->GetTokenName(token) << ". Errors = " << errors << endl;
   return errors;
 }
