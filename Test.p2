@@ -76,8 +76,14 @@ Using rule 33
 Starting <stmt>. Current token = IDENT_T
 Using rule 8
 Ending <stmt>. Current token = IDENT_T. Errors = 0
+Starting <stmt_list>. Current token = IDENT_T
+Using rule 5
+Starting <stmt>. Current token = IDENT_T
+Using rule 8
+Ending <stmt>. Current token = RPAREN_T. Errors = 0
 Starting <stmt_list>. Current token = RPAREN_T
 Using rule 6
+Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <action>. Current token = RPAREN_T. Errors = 0
 Ending <stmt>. Current token = RPAREN_T. Errors = 0
@@ -126,6 +132,14 @@ Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <action>. Current token = RPAREN_T. Errors = 0
 Ending <stmt>. Current token = NUMLIT_T. Errors = 0
+Starting <stmt_list>. Current token = NUMLIT_T
+Using rule 5
+Starting <stmt>. Current token = NUMLIT_T
+Using rule 7
+Starting <literal>. Current token = NUMLIT_T
+Using rule 10
+Ending <literal>. Current token = IDENT_T. Errors = 0
+Ending <stmt>. Current token = IDENT_T. Errors = 0
 Starting <stmt_list>. Current token = IDENT_T
 Using rule 5
 Starting <stmt>. Current token = IDENT_T
@@ -133,6 +147,7 @@ Using rule 8
 Ending <stmt>. Current token = RPAREN_T. Errors = 0
 Starting <stmt_list>. Current token = RPAREN_T
 Using rule 6
+Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <action>. Current token = RPAREN_T. Errors = 0
@@ -174,8 +189,14 @@ Using rule 33
 Starting <stmt>. Current token = IDENT_T
 Using rule 8
 Ending <stmt>. Current token = IDENT_T. Errors = 0
+Starting <stmt_list>. Current token = IDENT_T
+Using rule 5
+Starting <stmt>. Current token = IDENT_T
+Using rule 8
+Ending <stmt>. Current token = RPAREN_T. Errors = 0
 Starting <stmt_list>. Current token = RPAREN_T
 Using rule 6
+Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <action>. Current token = RPAREN_T. Errors = 0
 Ending <stmt>. Current token = RPAREN_T. Errors = 0
@@ -227,6 +248,14 @@ Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <action>. Current token = RPAREN_T. Errors = 0
 Ending <stmt>. Current token = NUMLIT_T. Errors = 0
+Starting <stmt_list>. Current token = NUMLIT_T
+Using rule 5
+Starting <stmt>. Current token = NUMLIT_T
+Using rule 7
+Starting <literal>. Current token = NUMLIT_T
+Using rule 10
+Ending <literal>. Current token = IDENT_T. Errors = 0
+Ending <stmt>. Current token = IDENT_T. Errors = 0
 Starting <stmt_list>. Current token = IDENT_T
 Using rule 5
 Starting <stmt>. Current token = IDENT_T
@@ -234,6 +263,7 @@ Using rule 8
 Ending <stmt>. Current token = RPAREN_T. Errors = 0
 Starting <stmt_list>. Current token = RPAREN_T
 Using rule 6
+Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <stmt_list>. Current token = RPAREN_T. Errors = 0
 Ending <action>. Current token = RPAREN_T. Errors = 0
