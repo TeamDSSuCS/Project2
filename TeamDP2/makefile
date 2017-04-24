@@ -27,6 +27,8 @@ submit : Project2.cpp LexicalAnalyzer.h LexicalAnalyzer.save SyntacticalAnalyzer
 	cp LexicalAnalyzer.save TeamDP2
 	cp SyntacticalAnalyzer.h TeamDP2
 	cp SyntacticalAnalyzer.cpp TeamDP2
+	cp SetLimits.cpp TeamDP2
+	cp SetLimits.h TeamDP2
 	cp makefile TeamDP2
 	cp README.txt TeamDP2
 	tar cfvz TeamDP2.tgz TeamDP2
